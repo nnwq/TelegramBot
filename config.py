@@ -1,5 +1,3 @@
-TOKEN = '5917616115:AAGg85xLYKSNNONuNPocAbN4d3ovY0S_UWM'
-
 keys = {
     'USD': 'USD',
     'usd': 'USD',
@@ -7,11 +5,16 @@ keys = {
     'Dollar': 'USD',
     'dollar': 'USD',
     'Euro': 'EUR',
+    'EURO': 'EUR',
+    'EUR': 'EUR',
     'euro': 'EUR',
     'Eur': 'EUR',
     'eur': 'EUR',
+    'RUB': 'RUB',
     'rub': 'RUB',
     'Rub': 'RUB',
     'Ruble': 'RUB',
     'ruble': 'RUB'
        }
+
+
