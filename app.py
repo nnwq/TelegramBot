@@ -1,9 +1,6 @@
 import telebot
-import requests
-import json
-from config import keys
-from APIKEY import APIKey
 from TOKEN import TOKEN
+from extensions import APIException, CurrencyConverter
 
 
 bot = telebot.TeleBot(TOKEN)
@@ -26,11 +23,25 @@ def values(message: telebot.types.Message):
 
 @bot.message_handler(content_types=['text', ])
 def exchange(message: telebot.types.Message):
-    quote, base, amount = message.text.split(' ')
-    url = requests.get(f'https://anyapi.io/api/v1/exchange/convert?apiKey={APIKey}&base={keys[base]}&to={keys[quote]}&amount={amount}')
-    response = json.loads(url.content)['converted']
-    text = f'{amount} {quote} is {response} {base}'
-    bot.send_message(message.chat.id, text)
+    try:
+        values = message.text.split(' ')
+
+        if len(values) != 3:
+            raise APIException('Invalid number of parameters, please check example in /values')
+
+        base, quote, amount = values
+        response = CurrencyConverter.get_price(quote, base, amount)
+
+        if not amount.isdigit():
+            raise APIException('Amount should be a valid number.')
+
+    except APIException as errormessage:
+        bot.reply_to(message, f'Input error.\n{errormessage}')
+    except Exception as errormessage:
+        bot.reply_to(message, f'Could not process a command, server error.\n{errormessage}')
+    else:
+        text = f'{amount} {base} is {response} {quote}'
+        bot.send_message(message.chat.id, text)
 
 
 bot.polling()

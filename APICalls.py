@@ -1,4 +1,4 @@
-#this file is made for easier comprehension of a json response
+# this file was made for an easier comprehension of a json response
 
 url = "https://anyapi.io/api/v1/exchange/convert?base=USD&to=EUR&amount=10000'"
 response = {
