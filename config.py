@@ -10,11 +10,11 @@ keys = {
     'euro': 'EUR',
     'Eur': 'EUR',
     'eur': 'EUR',
-    'RUB': 'RUB',
-    'rub': 'RUB',
-    'Rub': 'RUB',
-    'Ruble': 'RUB',
-    'ruble': 'RUB'
+    'GBP': 'GBP',
+    'gbp': 'GBP',
+    'Gbp': 'GBP',
+    'Pound': 'GBP',
+    'pound': 'GBP'
        }
 
 
